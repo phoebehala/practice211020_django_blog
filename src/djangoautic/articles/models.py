@@ -9,7 +9,7 @@ from django.db.models.fields import DateField, SlugField
 # Create your models here.
 class Article(models.Model):
     title = models.CharField(max_length=100)
-    Slug = models.SlugField()   # s/b url friendly string
+    slug = models.SlugField()   # s/b url friendly string
     body = models.TextField()
     date = models.DateTimeField( auto_now_add=True)
     # add in thumbnail late

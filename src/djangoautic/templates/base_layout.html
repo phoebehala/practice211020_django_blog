@@ -10,8 +10,16 @@
 
     <body>
         <div class="wrapper">
+
+            <!-- the url we want to go is what we just named 'list -->
+            <!--  articlesApp >>> app_name we define inside urls.py of articles app
+                    if there were two apps with the same url name, Django would know where to find it
+                    in this case, it will look in the articles URL for the list url   -->
+            <h1><a href="{% url 'articlesApp:list' %}"><img src="{% static 'logo.png' %}"></a></h1>
+           
             {% block content %}
-            
+            <!-- this is where we need a block called content to go.
+                so if you come across a block called content in an individual template, I want you to take that and put it right here inside this global template -->
             {% endblock %}
         </div>
     </body>

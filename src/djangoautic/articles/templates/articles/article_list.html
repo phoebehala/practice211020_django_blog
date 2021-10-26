@@ -5,7 +5,13 @@
         <div class="articles">
             {% for article in articles %}
                 <div class="article">
-                    <h2><a href="#">{{ article.title }}</a></h2>
+                    <!-- the url we want to go is what we just named 'detail' -->
+                    <!--  articlesApp >>> app_name we define inside urls.py of articles app
+                          if there were two apps with the same url name, Django would know where to find it
+                          in this case, it will look in the articles URL for the detail url   -->
+                    <h2><a href="{% url 'articlesApp:detail' article.slug %}">{{ article.title }}</a></h2>
+                    
+                    <!-- .snippet   >>> call our own model method -->
                     <p>{{ article.snippet }}</p>
                     <p>{{ article.date }}</p>
                 </div>
