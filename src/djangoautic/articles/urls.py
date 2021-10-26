@@ -14,6 +14,7 @@ from django.urls.conf import path
 urlpatterns = [
     url(r'^$',views.article_list),    #when the user visit .com, it fires homepage() in the views.py
     
+    path('<slug:mySlug>/', views.article_detail),
     
   
 ]

@@ -3,6 +3,8 @@ from django.shortcuts import render
 # from .models  >>> from current directory and get models.py file
 from .models import Article
 
+from django.http import HttpResponse
+
 
 
 # Create your views here.
@@ -15,4 +17,6 @@ def article_list(request):
     # {key, value} >>> make the dictionary for the third parameter  
     return render(request, 'articles/article_list.html',{'articles':articles})
 
+def article_detail(request,mySlug):
+    return HttpResponse(mySlug)
 
