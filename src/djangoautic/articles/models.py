@@ -12,7 +12,12 @@ class Article(models.Model):
     slug = models.SlugField()   # s/b url friendly string
     body = models.TextField()
     date = models.DateTimeField( auto_now_add=True)
-    # add in thumbnail late
+
+    # add in thumbnail 
+    # blank=True >>> humb is allowed to be empty
+    thumb = models.ImageField(default="default.png", blank=True)
+   
+
     # add in author later
 
     # instance of Article

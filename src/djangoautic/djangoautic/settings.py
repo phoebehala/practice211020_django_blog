@@ -134,4 +134,12 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'assets'),
 )
 
+
+MEDIA_URL ='/media/'
+# MEDIA_ROOT >>> a folder where django upload image to 
+# BASE_DIR >>> the base directory of the whole project. it's djangoautic project folder in this case
+# ( , 'media') >>> append folder called media to the base directory
+# when we upload something, it's going to upload to the 'media' folder.
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media' )
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

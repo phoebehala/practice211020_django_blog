@@ -25,6 +25,12 @@ from django.conf.urls import url, include
 from . import views
 
 
+''' allow us to say where the media url is and where the document root is and it'll allow django to serve up this media files'''
+from django.conf.urls.static import static
+''' so that we can use pretty much access everything we defined in the settings.py'''
+from django.conf import settings
+
+
 # tell Django that it can serve up our static file (css, images, javascript) >>>  in reality, we hook it up with a service like AWS to serve our static file
 # staticfiles_urlpatterns >>> let us append to the url pattern so that django can handle and serving up the static file
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -44,5 +50,10 @@ urlpatterns = [
 
 ]
 
+
+
 # staticfiles_urlpatterns() >>> check if we are in debug mode. if we are, we'll append this thing right here. so that it knows how to serve up our own static file
 urlpatterns += staticfiles_urlpatterns()
+
+# static(media url, where the file stored)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
