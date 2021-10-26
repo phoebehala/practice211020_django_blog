@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.admin',
-    'django.contrib.auth',
+    'django.contrib.auth', # lots of functionality has already installed into django, that's why we can add new user in the admin
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -41,6 +41,8 @@ INSTALLED_APPS = [
 
     # register app we just created
     'articles',
+
+    'accounts',
 ]
 
 MIDDLEWARE = [

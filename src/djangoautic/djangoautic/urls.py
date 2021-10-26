@@ -47,7 +47,8 @@ urlpatterns = [
     url(r'^about/$',views.about),
     url(r'^$',views.homepage),    #when the user visit .com, it fires homepage() in the views.py
     url(r'^articles/',include('articles.urls')),
-
+    
+    path('accounts/', include('accounts.urls')),
 ]
 
 
