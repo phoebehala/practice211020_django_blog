@@ -19,9 +19,15 @@ from django.urls import path
 # import url (follow Ninja)
 from django.conf.urls import url, include
 
+
 ''' import views.py we created '''
 # from . >>>  from the curent directory you are in
 from . import views
+
+
+# tell Django that it can serve up our static file (css, images, javascript) >>>  in reality, we hook it up with a service like AWS to serve our static file
+# staticfiles_urlpatterns >>> let us append to the url pattern so that django can handle and serving up the static file
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
 urlpatterns = [
@@ -37,3 +43,6 @@ urlpatterns = [
     url(r'^articles/',include('articles.urls')),
 
 ]
+
+# staticfiles_urlpatterns() >>> check if we are in debug mode. if we are, we'll append this thing right here. so that it knows how to serve up our own static file
+urlpatterns += staticfiles_urlpatterns()
