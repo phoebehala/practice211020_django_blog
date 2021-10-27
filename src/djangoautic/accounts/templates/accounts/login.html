@@ -1,0 +1,19 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+        <h1>Login</h1>
+
+        <!-- post request >>> send data to the server -->
+
+        <!-- action="{% url 'accountsApp:login' %}"  >>> action="/accounts/Login/ -->
+        <form class="site-form" action="{% url 'accountsApp:login' %}" method="post">
+            
+                <!-- when we send data to the server, we need to send data with a token. prove that the post request is from our app-->
+                {% csrf_token %}
+
+                <!-- {{ myForm }} output data -->
+                {{ myForm }}
+                <input type="submit" value="Login">
+        </form>
+        
+{% endblock %} 

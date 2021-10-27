@@ -4,9 +4,9 @@
         <h1>Signup</h1>
 
         <!-- post request >>> send data to the server -->
+        <!-- {% url 'accountsApp:signup' %} -->
         <form class="site-form" action="/accounts/signup/" method="post">
-
-                <!-- when we send data to the server, we need to send data with a token. prove that the post request is from our app-->
+               <!-- when we send data to the server, we need to send data with a token. prove that the post request is from our app-->
                 {% csrf_token %}
 
                 <!-- {{ myForm }} output data -->

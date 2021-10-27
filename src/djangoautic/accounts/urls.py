@@ -8,8 +8,12 @@ from . import views
 app_name = "accountsApp"
 
 urlpatterns = [
-   
+
+    #url(r'^signup/$', views.signup_view, name="signup"),
     path('signup/', views.signup_view, name="signup"),
+
+    #url(r'^login/$', views.login_view, name="login"),
+    path('login/', views.login_view, name="login"),
   
 ]
 
