@@ -4,10 +4,14 @@
         <h1>Signup</h1>
 
         <!-- post request >>> send data to the server -->
-        <form class="site-form" action="accounts/signup.html" method="post">
+        <form class="site-form" action="/accounts/signup/" method="post">
 
-        <!-- {{ myForm }} output data -->
-               {{ myForm }} 
-               <input type="submit" value="Signup">
+                <!-- when we send data to the server, we need to send data with a token. prove that the post request is from our app-->
+                {% csrf_token %}
+
+                <!-- {{ myForm }} output data -->
+                {{ myForm }}
+                <input type="submit" value="Signup">
         </form>
+        
 {% endblock %} 
