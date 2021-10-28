@@ -6,6 +6,8 @@ from .models import Article
 
 from django.http import HttpResponse
 
+from django.contrib.auth.decorators import login_required
+
 
 
 # Create your views here.
@@ -25,3 +27,10 @@ def article_detail(request,mySlug):
     article = Article.objects.get(slug=mySlug)
     return render(request, 'articles/article_detail.html',{'eachArticle':article} )
 
+
+# this is protecting article_create(request)  >>> u need to log in for this to work
+# if the user doen't log in, it redirect the user to login page
+@login_required(login_url="/accounts/login/")
+
+def article_create(request):
+    return render(request, 'articles/article_create.html')

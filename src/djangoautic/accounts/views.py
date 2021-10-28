@@ -44,7 +44,10 @@ def login_view(request):
             user = form.get_user()
             login(request, user)
 
-            return redirect('articlesApp:list')
+            if 'next' in request.POST:  # if 'next' is being sent along
+                return redirect(request.POST.get('next'))
+            else:
+                return redirect('articlesApp:list')
         
     else:
         form = AuthenticationForm()
