@@ -14,6 +14,11 @@ urlpatterns = [
 
     #url(r'^login/$', views.login_view, name="login"),
     path('login/', views.login_view, name="login"),
+
+    #url(r'^logout/$', views.logout_view, name="login"),
+    path('logout/', views.logout_view, name="logout"),
+
+
   
 ]
 
