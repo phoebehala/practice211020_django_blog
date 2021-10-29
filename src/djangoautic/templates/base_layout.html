@@ -9,7 +9,7 @@
     </head>
 
     <body>
-        <div class="wrapper">
+        <header class="wrapper">
 
             <!-- the url we want to go is what we just named 'list -->
             <!--  articlesApp >>> app_name we define inside urls.py of articles app
@@ -18,19 +18,28 @@
             <h1><a href="{% url 'articlesApp:list' %}"><img src="{% static 'logo.png' %}"></a></h1>
             <nav>
                 <ul>
+                    {% if user.is_authenticated %}
                     <li>
                         <form class="logout-link" action="{% url 'accountsApp:logout' %}" method="post">
                             {% csrf_token %}
                             <button type="submit">Logout</button>
                         </form>
                     </li>
+
+                    <li><a href="{% url 'articlesApp:create' %}" class="highlight">New an Article</a></li>
+
+                    {% else %}
+                        <li><a href="{% url 'articlesApp:create' %}" class="highlight">New an Article</a></li>
+                        <li><a href="{% url 'accountsApp:login' %}">Login</a></li>
+                        <li><a href="{% url 'accountsApp:signup' %}">Signup</a></li>
+                    {% endif %}
                 </ul>
             </nav>
             {% block content %}
             <!-- this is where we need a block called content to go.
                 so if you come across a block called content in an individual template, I want you to take that and put it right here inside this global template -->
             {% endblock %}
-        </div>
+        </header>
     </body>
 </html>
     
