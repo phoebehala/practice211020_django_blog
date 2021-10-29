@@ -5,6 +5,7 @@
 
 from django.db import models
 from django.db.models.fields import DateField, SlugField
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Article(models.Model):
@@ -16,7 +17,9 @@ class Article(models.Model):
     # add in thumbnail 
     # blank=True >>> humb is allowed to be empty
     thumb = models.ImageField(default="default.png", blank=True)
-   
+
+    #  .ForeignKey() >>> associate a record from one model (the Article model) with a record from another model(User model) 
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
 
     # add in author later
 

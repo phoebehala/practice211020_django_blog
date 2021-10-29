@@ -44,7 +44,16 @@ def article_create(request):
                                                 # when we upload files, they don't come along with POST object. they come along with separate object FILES
        
         if form.is_valid():
-           return redirect('articlesApp:list')
+
+            # save article to db
+            # form.save() >>> return us that instance of that (article in this case)
+            # commit=False >>> hang on a minute. we'll save it in a moment but don't commit to that action just yet, just give me that instance amd I'll do something with it then I'll save it
+            myInstance = form.save(commit=False)
+
+            # attach the author I log in to that instance
+            myInstance.author = request.user
+            myInstance.save()
+            return redirect('articlesApp:list')
     else:
         # show empty form of creating Article
        form = forms.CreateArticle()
