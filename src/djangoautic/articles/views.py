@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django import forms
+from django.shortcuts import redirect, render
 
 # from .models  >>> from current directory and get models.py file
 # Article >>> class name created inside of models.py
@@ -8,6 +9,9 @@ from django.http import HttpResponse
 
 from django.contrib.auth.decorators import login_required
 
+# . >>> curent directory
+# import our own created forms.py
+from . import forms
 
 
 # Create your views here.
@@ -32,5 +36,19 @@ def article_detail(request,mySlug):
 # if the user doen't log in, it redirect the user to login page
 @login_required(login_url="/accounts/login/")
 
-def article_create(request):
-    return render(request, 'articles/article_create.html')
+def article_create(request): 
+    if request.method == 'POST':
+        form = forms.CreateArticle(request.POST, request.FILES)
+                                    # request.POST  >>> kinda the data we receive
+                                    # take data and somehow validate
+                                                # when we upload files, they don't come along with POST object. they come along with separate object FILES
+       
+        if form.is_valid():
+           return redirect('articlesApp:list')
+    else:
+        # show empty form of creating Article
+       form = forms.CreateArticle()
+
+
+    # send that form to 'articles/article_create.html'
+    return render(request, 'articles/article_create.html',{'formOfCreatedArticle':form})

@@ -9,6 +9,7 @@ from . import views
 
 from django.urls.conf import path
 
+
 app_name = "articlesApp"
 
 urlpatterns = [

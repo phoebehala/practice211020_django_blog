@@ -1,7 +1,20 @@
 {% extends 'base_layout.html' %}
 
 {% block content %}
-    <div class="create-article">  
-        <h2>Create an Awsome New Article </h2>
+    <div class="create-article">
+        <h2>Create an Awesome New Article</h2>
+
+                            <!-- whenever we have upload field, we always have enctype="multipart/form-data" -->
+        <form class="site-form" action="{% url 'articlesApp:create' %}" method="post" enctype="multipart/form-data">
+            
+            <!-- {% csrf_token %} >>> a security measure to prevent requests from other websites sending data to our server  -->
+            {% csrf_token %}
+
+            <!-- output data -->
+            {{ formOfCreatedArticle }}
+
+            <input type="submit" value="Create">
+        </form>
+
     </div>
 {% endblock %}

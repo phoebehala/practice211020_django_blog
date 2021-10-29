@@ -18,7 +18,7 @@
                 <!-- check if request.GET.next exists... -->
                 {% if request.GET.next %}
                         <!-- if request.GET.next exist,  then we output the hidden input-->
-                        <input type="hidden" name="next" value="{{ request..GET.next }}">
+                        <input type="hidden" name="next" value="{{ request.GET.next }}">
                 {% endif %}
 
                 <!-- when we make the post request,  the info{{ request..GET.next }} will come along with the post request-->
