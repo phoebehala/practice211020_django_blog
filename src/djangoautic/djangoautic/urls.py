@@ -21,8 +21,11 @@ from django.conf.urls import url, include
 
 
 ''' import views.py we created '''
-# from . >>>  from the curent directory you are in
+# from . >>>  from the current directory you are in
 from . import views
+
+# we said "article_view" here is because we already have imported "views" from urls.py under the djangoautic app
+from articles import views as article_views
 
 
 ''' allow us to say where the media url is and where the document root is and it'll allow django to serve up this media files'''
@@ -45,7 +48,11 @@ urlpatterns = [
     # $ >> the end of the string. /  >>> abmin has to be the end of the string
     path('admin/', admin.site.urls),
     url(r'^about/$',views.about),
-    url(r'^$',views.homepage),    #when the user visit .com, it fires homepage() in the views.py
+
+    # url(r'^$',views.homepage),    #when the user visit .com, it fires homepage() in the views.py
+    # instead of url(r'^$',views.homepage), write like this...
+    url(r'^$',article_views.article_list, name="home"),
+
     url(r'^articles/',include('articles.urls')),
     
     path('accounts/', include('accounts.urls')),

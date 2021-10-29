@@ -15,7 +15,7 @@
             <!--  articlesApp >>> app_name we define inside urls.py of articles app
                     if there were two apps with the same url name, Django would know where to find it
                     in this case, it will look in the articles URL for the list url   -->
-            <h1><a href="{% url 'articlesApp:list' %}"><img src="{% static 'logo.png' %}"></a></h1>
+            <h1><a href="{% url 'home' %}"><img src="{% static 'logo.png' %}"></a></h1>
             <nav>
                 <ul>
                     {% if user.is_authenticated %}
@@ -29,7 +29,7 @@
                     <li><a href="{% url 'articlesApp:create' %}" class="highlight">New an Article</a></li>
 
                     {% else %}
-                        <li><a href="{% url 'articlesApp:create' %}" class="highlight">New an Article</a></li>
+                        <li><a href="{% url 'articlesApp:create' %}" >New an Article</a></li>
                         <li><a href="{% url 'accountsApp:login' %}">Login</a></li>
                         <li><a href="{% url 'accountsApp:signup' %}">Signup</a></li>
                     {% endif %}
