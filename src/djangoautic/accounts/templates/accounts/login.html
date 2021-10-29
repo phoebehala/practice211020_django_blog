@@ -3,17 +3,30 @@
 {% block content %}
         <h1>Login</h1>
 
-        <!-- post request >>> send data to the server -->
+        {% if error %}
+                <div class="alert alert-danger">
+                        {{error}}
+                </div>
+        {% endif %}
 
+        <!-- post request >>> send data to the server -->
         <!-- action="{% url 'accountsApp:login' %}"  >>> action="/accounts/Login/ -->
         <form class="site-form" action="{% url 'accountsApp:login' %}" method="post">
             
                 <!-- when we send data to the server, we need to send data with a token. prove that the post request is from our app-->
                 {% csrf_token %}
 
-                <!-- {{ myForm }} output data -->
-                {{ myForm }}
-
+                <!-- output data by django format 
+                {{ myForm }} -->
+                
+                <div class="form-group mb-3">
+                        <label for="username">Username</label>
+                        <input required type="text" class="form-control" name="username" id="username">
+                </div>
+                <div class="form-group mb-3">
+                        <label for="password1">Password</label>
+                        <input required type="password" class="form-control" name="password" id="password">
+                </div>
 
                 <!-- check if request.GET.next exists... -->
                 {% if request.GET.next %}

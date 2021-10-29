@@ -2,16 +2,39 @@
 
 {% block content %}
         <h1>Signup</h1>
-
+        
+        {% if error %}
+                <div class="alert alert-danger">
+                        {{error}}
+                </div>
+        {% endif %}
+        
         <!-- post request >>> send data to the server -->
         <!-- {% url 'accountsApp:signup' %} -->
         <form class="site-form" action="/accounts/signup/" method="post">
                <!-- when we send data to the server, we need to send data with a token. prove that the post request is from our app-->
                 {% csrf_token %}
 
-                <!-- {{ myForm }} output data -->
-                {{ myForm }}
-                <input type="submit" value="Signup">
+                <!-- output data by django format
+                {{ myForm }} -->
+
+                <div class="form-group mb-3">
+                        <label for="username">Username</label>
+                                <input required type="text" class="form-control" name="username" id="username" aria-describedby="usernameHelp">
+                        <small class="form-text text-muted" id="usernameHelp">Your username must be unique.</small>
+                </div>
+                <div class="form-group mb-3">
+                        <label for="password1">Password</label>
+                        <input required type="password" class="form-control" name="password1" id="password1">
+                </div>
+                <div class="form-group mb-3">
+                        <label for="password2">Confirm Password</label>
+                        <input required type="password" class="form-control" name="password2" id="password2">
+                </div>
+                <br>
+
+                <input type="submit" class="btn btn-primary" value="Signup">
+                
         </form>
         
 {% endblock %} 

@@ -30,4 +30,4 @@ class Article(models.Model):
     ''' model method '''
     def snippet(self):
                        # [:50] means [0:50] means from 0 to fiftieth character
-        return self.body[:50]+"..."
+        return self.body[:200]+"..."

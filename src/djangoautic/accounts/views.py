@@ -2,6 +2,8 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
 
+from django.db import IntegrityError
+
 # Create your views here.
  
 def signup_view(request):
@@ -20,9 +22,18 @@ def signup_view(request):
            login(request, user)
             
            return redirect('articlesApp:list')   # return to article app and url named 'list' in the urls.py of articles app
-  
+       else:
+            #Tell the user that passwords do not match
+            return render(
+                request, 
+                'accounts/signup.html', 
+                {
+                    'form': UserCreationForm(),
+                    'error':'Passwords did not match'
+                }
+            )
+
    else:
- 
        #UserCreationForm() >>> create a new instance of this form
        form = UserCreationForm()
  
@@ -48,10 +59,20 @@ def login_view(request):
                 return redirect(request.POST.get('next'))
             else:
                 return redirect('articlesApp:list')
+       else:
+            return render(
+                request, 
+                'accounts/login.html', 
+                { 
+                    'form' : AuthenticationForm(),
+                    'error':'Username and password are incorrect'
+                }
+            )
         
     else:
         form = AuthenticationForm()
 
+        
     return render(request, 'accounts/login.html', {'myForm':form})
 
 
