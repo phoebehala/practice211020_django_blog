@@ -1,7 +1,7 @@
 {% extends 'base_layout.html' %}
 
 {% block content %}
-        <h1>Articles List</h1>
+        <h1> - Traveling Blog - </h1>
 
         <div class="articles">
 
@@ -17,7 +17,7 @@
                     <hr>
                     <h2><a href="{% url 'articlesApp:detail' article.slug %}">{{ article.title }}</a></h2>
                     
-                    <p class="author"> - posted by {{ article.author }} -</p>
+                    <p class="description"> - posted by {{ article.author }} -</p>
                     <!-- .snippet   >>> call our own model method -->
                     <p>{{ article.snippet }}</p>
 

@@ -8,7 +8,8 @@ body{
 
 }
 body *{
-    font-family: Ubuntu;
+    /* font-family: Ubuntu; */
+    font-family: Helvetica, sans-serif, Times, serif;
 }
 
 h1, h2, h3, h4, h5{
@@ -166,16 +167,18 @@ a.highlight{
 }
 
 .site-form input[type="submit"]{
-    background: #00dba0;
+    border: 1px solid lightcyan;
+    background-color:lightcyan;
     border: 0;
-    color: #fff;
+    color: gray;
     font-size: 20px;
     border-radius: 4px;
     margin: 10px 0;
+    padding: 0 5px 0 5px;
 }
 
 
-.author{
+.description{
     color: gray;
     font-size: 0.5 em;
 }
